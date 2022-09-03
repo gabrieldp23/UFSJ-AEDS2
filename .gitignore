@@ -1,7 +1,8 @@
-#excludes no-extension files (linux)
+#excludes no-extension files (Linux)
 *
 !/**/
 !*.*
+!Makefile
 
-#excludes ".exe" files (windows)
+#excludes ".exe" files (Windows)
 *.exe
