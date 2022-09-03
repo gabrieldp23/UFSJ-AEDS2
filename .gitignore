@@ -1,0 +1,7 @@
+#excludes no-extension files (linux)
+*
+!/**/
+!*.*
+
+#excludes ".exe" files (windows)
+*.exe
