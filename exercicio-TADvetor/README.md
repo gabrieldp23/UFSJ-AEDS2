@@ -1,5 +1,7 @@
 # Exercício TAD Vetor
 
+### (25 agosto 2022)
+
 Você deve criar um TAD Vetor, capaz de armazenar e operar vetores 2D.
 
 Um Vetor contém dois valores, relativos às coordenadas horizontal e vertical, e deve implementar as seguintes operações:
