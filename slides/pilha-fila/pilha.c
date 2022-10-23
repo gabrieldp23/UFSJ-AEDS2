@@ -22,7 +22,7 @@ typedef struct {
 void esvaziar (Pilha* p) {
     p->ultimo = (Apontador) malloc(sizeof(Celula));
     p->ultimo->anterior = NULL;
-    p->tamanho = 0;
+    p->tamanho = 0; 
 }
 
 int vazia (Pilha* p) {
@@ -38,7 +38,7 @@ void empilhar (Item i, Pilha* p) {
 }
 
 void desempilhar (Pilha* p, Item* i) {
-    if (vazia(p)) {
+    if (vazia(&p)) {
         printf("\nPilha vazia\n");
         return;
     } 
@@ -59,6 +59,22 @@ void topo (Pilha* p, Item* i) {
 
 //-------
 
+Pilha reverte(Pilha* p) {
+    if (p->tamanho <= 1) return *p;
+
+    Pilha pReverso;
+    esvaziar(&pReverso);
+    do {
+        Item ultimoItem;
+        desempilhar(p, &ultimoItem);
+        empilhar(ultimoItem, &pReverso);
+    } while (p->tamanho > 1);
+
+    return pReverso;
+}
+
+//-------
+
 void main () {
     Pilha pilha;
     esvaziar(&pilha);
@@ -70,13 +86,14 @@ void main () {
     empilhar(item, &pilha);
     item.valor = 55;
     empilhar(item, &pilha);
-    //printf("--%d--", ((pilha.ultimo)->item).valor);
+    printf("--%d--", ((pilha.ultimo)->item).valor);
+
+    Pilha reverso = reverte(&pilha);
+    printf("--%d--", ((pilha.ultimo)->item).valor);
+    
 
     desempilhar(&pilha, &item);
     desempilhar(&pilha, &item);
     desempilhar(&pilha, &item);
     //printf("--%d--", ((pilha.ultimo)->item).valor);
-
-    topo(&pilha, &item);
-    printf("\n\n%d\n\n", item.valor);
 }
