@@ -1,6 +1,6 @@
 #include "sorting.h"
 
-Data createData(char* fileDir) {
+Data createArray(char* fileDir) {
     Data data;
 
     Item* array = (Item*)malloc(sizeof(Item));
@@ -19,22 +19,22 @@ Data createData(char* fileDir) {
 
     data.array = array;
     data.length = array_length;
-    data.comps = 0;
-    data.moves = 0;
+    data.counter.comps = 0;
+    data.counter.moves = 0;
 
     return data;
 }
 
-void printData(Data* data) {
-    for (int i = 0; i < data->length; i++) {
-        printf("\n| %d |", data->array[i].key);
+void printArray(Item* array, int length) {
+    for (int i = 0; i < length; i++) {
+        printf("\n| %d |", array[i].key);
     }
 }
 
-void printStatistics(Data* data) {
+void printStatistics(Statistics counter) {
     printf("\n\n=========================");
-    printf("\nComparations: %d", data->comps);
-    printf("\nMovements: %d", data->moves);
+    printf("\nComparations: %d", counter.comps);
+    printf("\nMovements: %d", counter.moves);
     printf("\n=========================\n\n");
 }
 

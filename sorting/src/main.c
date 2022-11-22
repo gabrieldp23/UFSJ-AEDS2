@@ -1,9 +1,9 @@
 #include "sorting.h"
 
-void selectionSort(Data* data);
-void inserctionSort(Data* data);
-void shellSort(Data* data);
-void quickSort(Data* data);
+void selectionSort(Item* array, int length, Statistics* counter);
+void inserctionSort(Item* array, int length, Statistics* counter);
+void shellSort(Item* array, int length, Statistics* counter);
+void quickSort(Item* array, int length, Statistics* counter);
 
 int main(int argc, char** argv) {
     if (argc != 2) {
@@ -11,18 +11,18 @@ int main(int argc, char** argv) {
         return 1;
     }
 
-    Data data = createData(argv[1]);
+    Data data = createArray(argv[1]);
 
     /*
-        selectionSort(&data);
-        inserctionSort(&data);
-        shellSort(&data);
+    selectionSort(data.array, data.length, &data.counter);
+    shellSort(data.array, data.length, &data.counter);
+    inserctionSort(data.array, data.length, &data.counter);
     */
 
-    quickSort(&data);
+    quickSort(data.array, data.length, &data.counter);
 
-    printData(&data);
-    printStatistics(&data);
+    printArray(data.array, data.length);
+    printStatistics(data.counter);
 
     return 0;
 }

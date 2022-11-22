@@ -12,14 +12,18 @@ typedef struct Item {
 } Item;
 
 typedef struct {
+    int comps, moves;
+} Statistics;
+
+typedef struct {
     Item* array;
     int length;
-    int comps, moves;
+    Statistics counter;
 } Data;
 
-Data createData(char* fileDir);
-void printData(Data* data);
-void printStatistics(Data* data);
+Data createArray(char* fileDir);
+void printArray(Item* array, int length);
+void printStatistics(Statistics counter);
 void swap(Item* x, Item* y);
 
 #endif

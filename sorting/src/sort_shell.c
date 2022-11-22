@@ -1,30 +1,33 @@
 #include "sorting.h"
 
-void shellSort(Data* data) {
+void shellSort(Item* array, int length, Statistics* counter) {
     Item aux;
     int h = 1;
 
     do {
         h = 3 * h + 1;
-    } while (h < data->length);
+    } while (h < length);
 
     do {
         h /= 3;
-        for (int i = h; i < data->length; i++) {
-            aux = data->array[i];
+        for (int i = h; i < length; i++) {
+            counter->comps++;
 
-            data->comps++;
-            data->moves++;
+            aux = array[i];
+            counter->moves++;
 
             int j = i;
-            while (j >= 0 && data->array[j - h].key > aux.key) {
-                data->array[j] = data->array[j - h];
-                data->comps++;
-                data->moves++;
+            while (j >= h && array[j - h].key > aux.key) {
+                counter->comps++;
+
+                array[j] = array[j - h];
+                counter->moves++;
+
                 j -= h;
             }
-            data->array[j] = aux;
-            data->moves++;
+
+            array[j] = aux;
+            counter->moves++;
         }
     } while (h > 1);
 }

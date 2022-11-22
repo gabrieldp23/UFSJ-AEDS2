@@ -1,23 +1,21 @@
 #include "sorting.h"
 
-void inserctionSort(Data* data) {
-    for (int i = 1; i < data->length; i++) {
-        Item aux = data->array[i];
+void inserctionSort(Item* array, int length, Statistics* counter) {
+    for (int i = 1; i < length; i++) {
+        Item aux = array[i];
+        counter->moves++;
+
         int j = i - 1;
+        while (j >= 0 && array[j].key > aux.key) {
+            counter->comps++;
 
-        data->comps++;
-        data->moves++;
+            array[j + 1] = array[j];
+            counter->moves++;
 
-        while (j >= 0 && data->array[j].key > aux.key) {
-            data->array[j + 1] = data->array[j];
             j--;
-
-            data->comps++;
-            data->moves++;
         }
 
-        data->array[j + 1] = aux;
-
-        data->moves++;
+        array[j + 1] = aux;
+        counter->moves++;
     }
 }
