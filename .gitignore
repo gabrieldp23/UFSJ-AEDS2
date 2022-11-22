@@ -6,3 +6,6 @@
 
 #excludes ".exe" files (Windows)
 *.exe
+
+#exludes compilation object files
+*.o
